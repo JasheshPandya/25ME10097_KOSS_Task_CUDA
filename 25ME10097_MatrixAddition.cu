@@ -35,7 +35,7 @@ int main()
     cudaMemcpy(A,a,size,cudaMemcpyHostToDevice);
     cudaMemcpy(B,b,size,cudaMemcpyHostToDevice);
 
-    dim3 blockDim(N,N);
+    dim3 blockDim(N/2,N/2);
     dim3 gridDim(2,2);
     clock_t start = clock();
     AddMatrices<<<gridDim,blockDim>>>(A,B,C);
