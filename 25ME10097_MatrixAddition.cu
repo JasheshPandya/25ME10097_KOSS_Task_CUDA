@@ -39,6 +39,7 @@ int main()
     dim3 gridDim(2,2);
     clock_t start = clock();
     AddMatrices<<<gridDim,blockDim>>>(A,B,C);
+    cudaDeviceSynchronize();
     clock_t end = clock();
     cudaMemcpy(c,C,size,cudaMemcpyDeviceToHost);
     double time_spent = ((double)(end - start))/CLOCKS_PER_SEC;
